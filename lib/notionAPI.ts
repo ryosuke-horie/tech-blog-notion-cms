@@ -71,7 +71,6 @@ export const getSinglePost = async (slug) => {
   // console.log(metadata);
   const mdBlocks = await n2m.pageToMarkdown(page.id);
   const mdString = n2m.toMarkdownString(mdBlocks);
-  console.log(mdString);
 
   return {
     metadata,
@@ -135,7 +134,6 @@ export const getAllTags = async () => {
   const allTagsDuplicationLists = allPosts.flatMap((post) => post.tags);
   const set = new Set(allTagsDuplicationLists);
   const allTagsList = Array.from(set);
-  // console.log(allTagsList);
 
   return allTagsList;
 };
