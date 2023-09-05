@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 
 import SinglePost from '../components/Post/SinglePost'
 import { getPostsForTopPage } from '../lib/notionAPI'
@@ -39,6 +40,8 @@ export default function Home({ fourPosts }) {
             />
           </div>
         ))}
+
+        <Link href="/posts/page/1" className='mb-6 lg:w-1/2 mx-auto px-5 block text-right'>...もっと見る</Link>
       </main>
     </div>
   )
