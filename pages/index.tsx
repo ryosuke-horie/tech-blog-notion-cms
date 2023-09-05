@@ -1,13 +1,21 @@
-import Head from 'next/head'
+import { getAllPosts } from "../lib/notionAPI";
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const allPosts = await getAllPosts();
+
+  return {
+    props: {
+      allPosts,
+    },
+    revalidate: 60 * 60 * 6, // 6時間ごとに更新
+  };
+};
+
+export default function Home({ allPosts }) {
+  console.log(allPosts);
   return (
     <div>
-      <Head>
-        <title>My page title</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </Head>
+      <h1>NotionBlogを作成予定です</h1>
     </div>
-  )
+  );
 }

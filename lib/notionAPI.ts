@@ -1,16 +1,20 @@
-import { Client } from "@notionhq/client";
+import { Client } from '@notionhq/client'
 
 const notion = new Client({
-    auth: process.env.NOTION_TOKEN,
+  auth: process.env.NOTION_TOKEN,
 })
 
-export const getAllPost = async () => {
+export const getAllPosts = async () => {
+  try {
     const posts = await notion.databases.query({
-        database_id: process.env.NOTION_DATABASE_ID as string,
-        page_size: 100,
+      database_id: process.env.NOTION_DATABASE_ID || '',
     })
+    const allPosts = posts.results
+    console.log(allPosts)
 
-    const allPosts = posts.results;
-
-    return allPosts;
+    return allPosts
+  } catch (error) {
+    console.error(error)
+    throw new Error('Failed to retrieve posts from Notion API.')
+  }
 }
