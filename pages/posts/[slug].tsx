@@ -1,6 +1,28 @@
 import Link from "next/link";
 import React from "react";
 
+import { getAllPosts, getSinglePost } from "../../lib/notionAPI";
+
+export const getStaticPaths = async () => {
+    const allPosts = await getAllPosts();
+    const paths = allPosts.map(({ slug }) => ({ params: { slug } }))
+
+    return {
+        paths,
+        fallback: "blocking",
+    }
+}
+
+export const getStaticProps = async ({params}) => {
+    const post = await getSinglePost(params.slug);
+
+    return {
+        props: {
+            post,
+        },
+        revalidate: 60 * 60 * 6, // 6時間ごとに更新
+    };
+};
 
 
 const Post = ({ post }) => {

@@ -36,3 +36,25 @@ const getPageMetaData = (post) => {
     tags: getTags(post.properties.Tags.multi_select),
   }
 }
+
+export const getSinglePost = async (slug) => {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID || '',
+    filter: {
+      property:"Slug",
+      formula: {
+        string: {
+          equals: slug
+        },
+      },
+    },
+  });
+
+  const page = response.results[0]
+  const metadata = getPageMetaData(page)
+  console.log(page)
+
+  return {
+    page,
+  }
+}
