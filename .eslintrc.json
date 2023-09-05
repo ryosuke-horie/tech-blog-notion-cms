@@ -1,3 +1,41 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended", // js用
+    "plugin:@typescript-eslint/recommended-type-checked", // ts用
+    "next/core-web-vitals",
+    "prettier",
+  ],
+  "plugins": ["import", "unused-imports"], // import の順番を制御
+  "parserOptions": {
+    "project": ["./tsconfig.json"] // 追加
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off", // unused-imports/no-unused-imports で代用
+    "unused-imports/no-unused-imports": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "object",
+          "type",
+          "index"
+        ],
+        "newlines-between": "always", // import groups の間を1行あける
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true }, // 大文字小文字関係なくアルファベット順
+        "pathGroups": [
+          {
+            "pattern": "@/components/**",
+            "group": "internal",
+            "position": "before"
+          }
+        ]
+      }
+    ]
+  }
 }
