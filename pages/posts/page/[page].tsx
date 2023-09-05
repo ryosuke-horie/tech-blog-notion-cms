@@ -36,17 +36,20 @@ export const getStaticProps: GetStaticProps = async () => {
                 <h1 className="mb-16 text-center text-5xl font-medium">
                     Notion Blog🚀
                 </h1>
+                <section className="sm:grid grid-cols-2 w-5/6 gap-3 mx-auto">
                 {fourPosts.map((post) => (
-                    <div className="mx-4">
+                    <div>
                         <SinglePost
                             title={post.title}
                             description={post.description}
                             date={post.date}
                             tags={post.tags}
                             slug={post.slug}
+                            isPaginationPage={true}
                         />
                     </div>
                 ))}
+                </section>
             </main>
         </div>
     )
