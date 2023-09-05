@@ -13,6 +13,15 @@ img {
     margin: 0 auto;
 }
 
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
 p {
-    margin: 7px 0;
+    margin: 6px 0;
+    font-weight: 400;
 }
