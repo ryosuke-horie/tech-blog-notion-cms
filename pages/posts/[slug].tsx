@@ -2,6 +2,8 @@
 import Link from "next/link";
 import React from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import { getAllPosts, getSinglePost } from "../../lib/notionAPI";
 
@@ -41,7 +43,25 @@ const Post = ({ post }) => {
             ))}
 
             <div className="mt-10 font-medium">
-                <ReactMarkdown children={post.markdown.parent}></ReactMarkdown>
+                <ReactMarkdown components={{
+                    code({ node, inline, className, children }) {
+                        const match = /language-(\w+)/.exec(className || "");
+                        return !inline && match ? (
+                            <SyntaxHighlighter
+                                style={vscDarkPlus}
+                                language={match[1]}
+                                PreTag="div"
+                            >
+                                {String(children).replace(/\n$/, "")}
+                            </SyntaxHighlighter>
+                        ) : (
+                            <code>{children}</code>
+                        );
+                    },
+                }}
+                >
+                    {post.markdown.parent}
+                </ReactMarkdown>
             </div>
 
             <Link href="/">
