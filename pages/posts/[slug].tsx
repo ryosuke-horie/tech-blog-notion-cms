@@ -1,5 +1,7 @@
+/* eslint-disable react/no-children-prop */
 import Link from "next/link";
 import React from "react";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import { getAllPosts, getSinglePost } from "../../lib/notionAPI";
 
@@ -39,7 +41,7 @@ const Post = ({ post }) => {
             ))}
 
             <div className="mt-10 font-medium">
-                {post.markdown}
+                <ReactMarkdown children={post.markdown.parent}></ReactMarkdown>
             </div>
 
             <Link href="/">
