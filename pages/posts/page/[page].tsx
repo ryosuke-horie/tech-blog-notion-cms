@@ -2,12 +2,19 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import SinglePost from '../../../components/Post/SinglePost'
-import { getPostsByPage } from '../../../lib/notionAPI'
+import { getNumberOfPages, getPostsByPage } from '../../../lib/notionAPI'
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const getStaticPaths: GetStaticPaths = async () => {
+    const numberOfPages = await getNumberOfPages()
+
+    const params = []
+    for (let i = 1; i <= numberOfPages; i++) {
+        params.push({ params: { page: i.toString() } })
+    }
+
     return {
-        paths: [{ params: { page: "1" } }, { params: { page: "2" } }, { params: { page: "3" } }],
+        paths: params,
         fallback: 'blocking',
     }
 }
