@@ -5,20 +5,19 @@ const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
-const n2m = new NotionToMarkdown({ notionClient: notion });
+const n2m = new NotionToMarkdown({ notionClient: notion })
 
 export const getAllPosts = async () => {
-    const posts = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_ID || '',
-    })
-    const allPosts = posts.results
-    console.log(allPosts)
+  const posts = await notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID || '',
+  })
+  const allPosts = posts.results
+  console.log(allPosts)
 
-    return allPosts.map((post) => {
-      return getPageMetaData(post)
-    })
+  return allPosts.map((post) => {
+    return getPageMetaData(post)
+  })
 }
-
 
 const getPageMetaData = (post) => {
   console.log(post.properties.Description)
@@ -44,24 +43,24 @@ export const getSinglePost = async (slug) => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID || '',
     filter: {
-      property:"Slug",
+      property: 'Slug',
       formula: {
         string: {
-          equals: slug
+          equals: slug,
         },
       },
     },
-  });
+  })
 
-  const page = response.results[0];
-  const metadata = getPageMetaData(page);
+  const page = response.results[0]
+  const metadata = getPageMetaData(page)
   // console.log(metadata);
-  const mdBlocks = await n2m.pageToMarkdown(page.id);
-  const mdString = n2m.toMarkdownString(mdBlocks);
-  console.log(mdString);
+  const mdBlocks = await n2m.pageToMarkdown(page.id)
+  const mdString = n2m.toMarkdownString(mdBlocks)
+  console.log(mdString)
 
   return {
     metadata,
     markdown: mdString,
-  };
+  }
 }

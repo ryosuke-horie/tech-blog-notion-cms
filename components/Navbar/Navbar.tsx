@@ -1,19 +1,19 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className="container mx-auto lg:px-2 px-5 lg:w-2/5">
-      <div className="container flex items-center justify-between mx-auto">
+    <nav className="container mx-auto px-5 lg:w-2/5 lg:px-2">
+      <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="text-2xl font-medium">
           Ryo-tech-blog
         </Link>
         <div>
-          <ul className="flex items-center text-sm py-4">
+          <ul className="flex items-center py-4 text-sm">
             <li>
               <Link
                 href="/"
-                className="block px-4 py-2 hover:text-sky-900 transition-all duration-300"
+                className="block px-4 py-2 transition-all duration-300 hover:text-sky-900"
               >
                 Home
               </Link>
@@ -21,7 +21,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
-                className="block px-4 py-2 hover:text-sky-900 transition-all duration-300"
+                className="block px-4 py-2 transition-all duration-300 hover:text-sky-900"
               >
                 Twitter
               </Link>
@@ -29,7 +29,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
-                className="block px-4 py-2 hover:text-sky-900 transition-all duration-300"
+                className="block px-4 py-2 transition-all duration-300 hover:text-sky-900"
               >
                 Qiita
               </Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

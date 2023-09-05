@@ -1,31 +1,31 @@
-import Head from "next/head";
+import Head from 'next/head'
 
-import SinglePost from "../components/Post/SinglePost";
-import { getAllPosts } from "../lib/notionAPI";
+import SinglePost from '../components/Post/SinglePost'
+import { getAllPosts } from '../lib/notionAPI'
 
 export const getStaticProps = async () => {
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPosts()
 
   return {
     props: {
       allPosts,
     },
     revalidate: 60 * 60 * 6, // 6時間ごとに更新
-  };
-};
+  }
+}
 
 export default function Home({ allPosts }) {
-  console.log(allPosts);
+  console.log(allPosts)
   return (
-    <div className="container h-hull w-full mx-auto font-mono">
+    <div className="h-hull container mx-auto w-full font-mono">
       <Head>
         <title>Notion Blog</title>
         <meta name="description" content="Notion Blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container w-fulll mt-16">
-        <h1 className="text-5xl font-medium text-center mb-16">
+      <main className="w-fulll container mt-16">
+        <h1 className="mb-16 text-center text-5xl font-medium">
           Notion Blog🚀
         </h1>
         {allPosts.map((post) => (
@@ -41,5 +41,5 @@ export default function Home({ allPosts }) {
         ))}
       </main>
     </div>
-  );
+  )
 }
