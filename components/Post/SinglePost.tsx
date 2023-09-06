@@ -1,30 +1,30 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import React from 'react'
 
 type Props = {
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  slug: string;
-  isPaginationPage: boolean;
-};
+  title: string
+  description: string
+  date: string
+  tags: string[]
+  slug: string
+  isPaginationPage: boolean
+}
 
 const SinglePost = (props: Props) => {
-  const { title, description, date, tags, slug, isPaginationPage } = props;
+  const { title, description, date, tags, slug, isPaginationPage } = props
 
   return (
     <>
       {isPaginationPage ? (
-        <section className=" bg-sky-900 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
-          <div className="lg:flex items-center">
-            <h2 className="text-gray-100 text-2xl font-medium mb-2">
+        <section className=" mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none">
+          <div className="items-center lg:flex">
+            <h2 className="mb-2 text-2xl font-medium text-gray-100">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
-            <div className="text-gray-400 mr-2">{date}</div>
+            <div className="mr-2 text-gray-400">{date}</div>
             {tags.map((tag: string, index: number) => (
               <Link href={`/posts/tag/${tag}/page/1`} key={index}>
-                <span className="text-white bg-gray-500 rounded-xl px-2 font-medium mr-2">
+                <span className="mr-2 rounded-xl bg-gray-500 px-2 font-medium text-white">
                   {tag}
                 </span>
               </Link>
@@ -33,15 +33,15 @@ const SinglePost = (props: Props) => {
           <p className="text-gray-100">{description}</p>
         </section>
       ) : (
-        <section className="lg:w-1/2 bg-sky-900 mb-8 mx-auto rounded-md p-5 shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300">
+        <section className="mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none lg:w-1/2">
           <div className="flex items-center gap-3">
-            <h2 className="text-gray-100 text-2xl font-medium mb-2">
+            <h2 className="mb-2 text-2xl font-medium text-gray-100">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
             <div className="text-gray-400">{date}</div>
             {tags.map((tag: string, index: number) => (
               <Link href={`/posts/tag/${tag}/page/1`} key={index}>
-                <span className="text-white bg-gray-500 rounded-xl px-2 font-medium">
+                <span className="rounded-xl bg-gray-500 px-2 font-medium text-white">
                   {tag}
                 </span>
               </Link>
@@ -51,7 +51,7 @@ const SinglePost = (props: Props) => {
         </section>
       )}
     </>
-  );
-};
+  )
+}
 
-export default SinglePost;
+export default SinglePost
