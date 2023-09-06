@@ -20,15 +20,15 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="#"
+                href="https://github.com/ryosuke-horie"
                 className="block px-4 py-2 transition-all duration-300 hover:text-sky-900"
               >
-                Twitter
+                Github
               </Link>
             </li>
             <li>
               <Link
-                href="#"
+                href="https://qiita.com/ryosuke-horie"
                 className="block px-4 py-2 transition-all duration-300 hover:text-sky-900"
               >
                 Qiita
