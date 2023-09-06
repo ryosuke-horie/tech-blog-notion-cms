@@ -44,6 +44,7 @@
         ]
       }
     ],
+    // JSDocのルールの参考元：https://zenn.dev/wakamsha/articles/setup-eslint-plugin-jsdoc
     // Enable
     "jsdoc/check-param-names": [
       "error",
