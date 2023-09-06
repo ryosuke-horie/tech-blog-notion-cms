@@ -3,9 +3,10 @@
     "eslint:recommended", // js用
     "plugin:@typescript-eslint/recommended-type-checked", // ts用
     "next/core-web-vitals",
-    "prettier"
+    "prettier",
+    "plugin:jsdoc/recommended-typescript-error"
   ],
-  "plugins": ["import", "unused-imports"], // import の順番を制御
+  "plugins": ["import", "unused-imports", "jsdoc"], // import の順番を制御 // JSDocのルールを追加
   "parserOptions": {
     "project": ["./tsconfig.json"] // 追加
   },
@@ -42,6 +43,84 @@
           }
         ]
       }
-    ]
+    ],
+    // Enable
+    "jsdoc/check-param-names": [
+      "error",
+      {
+        "checkDestructured": false
+      }
+    ],
+    "jsdoc/check-tag-names": [
+      "error",
+      {
+        "definedTags": ["remarks", "typeParam"]
+      }
+    ],
+    "jsdoc/require-description": [
+      "error",
+      {
+        "contexts": [
+          "ArrowFunctionExpression",
+          "ClassDeclaration",
+          "ClassExpression",
+          "FunctionDeclaration",
+          "FunctionExpression",
+          "MethodDefinition",
+          "PropertyDefinition",
+          "VariableDeclaration",
+          "TSInterfaceDeclaration",
+          "TSTypeAliasDeclaration",
+          "TSPropertySignature",
+          "TSMethodSignature"
+        ]
+      }
+    ],
+    "jsdoc/require-hyphen-before-param-description": ["error", "always"],
+    "jsdoc/require-jsdoc": [
+      "error",
+      {
+        "publicOnly": true,
+        "require": {
+          "ArrowFunctionExpression": true,
+          "ClassDeclaration": true,
+          "ClassExpression": true,
+          "FunctionDeclaration": true,
+          "FunctionExpression": true,
+          "MethodDefinition": true
+        },
+        "contexts": [
+          "PropertyDefinition",
+          "VariableDeclaration",
+          "TSInterfaceDeclaration",
+          "TSTypeAliasDeclaration",
+          "TSPropertySignature",
+          "TSMethodSignature"
+        ],
+        "checkConstructors": false
+      }
+    ],
+    "jsdoc/require-param": [
+      "error",
+      {
+        "checkDestructuredRoots": false
+      }
+    ],
+    "jsdoc/tag-lines": [
+      "error",
+      "always",
+      {
+        "startLines": 1,
+        "applyToEndTag": false
+      }
+    ],
+    "jsdoc/sort-tags": [
+      "error",
+      {
+        "reportIntraTagGroupSpacing": false
+      }
+    ],
+    // Disable
+    "jsdoc/require-returns": ["off"]
   }
 }
