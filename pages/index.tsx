@@ -6,6 +6,9 @@ import SinglePost from '../components/Post/SinglePost'
 import Tag from '../components/Tag/Tag'
 import { getAllTags, getPostsForTopPage } from '../lib/notionAPI'
 
+/**
+ * SSGのためのデータ取得
+ */
 export const getStaticProps: GetStaticProps = async () => {
   const fourPosts = await getPostsForTopPage(4)
   const allTags = await getAllTags()
@@ -19,6 +22,9 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
+/**
+ * トップページ
+ */
 export default function Home({ fourPosts, allTags }) {
   return (
     <div className="container mx-auto h-full w-full">
