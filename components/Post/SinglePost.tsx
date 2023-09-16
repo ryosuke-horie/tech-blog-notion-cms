@@ -34,11 +34,11 @@ const SinglePost = (props: Props) => {
         </section>
       ) : (
         <section className="mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none lg:w-1/2">
-          <div className="flex items-center gap-3">
-            <h2 className="mb-2 text-2xl font-medium text-gray-100">
+          <div className="flex items-center justify-between">
+            <h2 className="w-4/6 lg:w-4/5 mb-2 text-2xl font-medium text-gray-100">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
-            <div className="text-gray-400">{date}</div>
+
             {tags.map((tag: string, index: number) => (
               <Link href={`/posts/tag/${tag}/page/1`} key={index}>
                 <span className="rounded-xl bg-gray-500 px-2 font-medium text-white">
