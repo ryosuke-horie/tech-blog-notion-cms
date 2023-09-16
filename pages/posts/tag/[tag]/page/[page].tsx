@@ -68,11 +68,11 @@ const BlogTagPageList = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mt-16 w-full">
-        <h1 className="mb-16 text-center text-5xl font-medium">
+      <main className="container mt-4 lg:mt-16 w-full">
+        <h1 className="mb-8 lg:mb-16 text-center text-5xl font-medium">
           Notion Blog🚀
         </h1>
-        <section className="mx-auto w-5/6 grid-cols-2 gap-3 sm:grid">
+        <section className="mx-2 lg:w-1/2 lg:mx-auto">
           {posts.map((post) => (
             <div key={post.id}>
               <SinglePost

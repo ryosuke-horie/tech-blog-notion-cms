@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="container mx-auto px-5 lg:w-2/5 lg:px-2">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="text-2xl font-medium">
-          Ryo-tech-blog
+          tech-blog
         </Link>
         <div>
           <ul className="flex items-center py-4 text-sm">
