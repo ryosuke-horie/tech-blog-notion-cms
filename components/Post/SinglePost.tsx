@@ -16,7 +16,7 @@ const SinglePost = (props: Props) => {
   return (
     <>
       {isPaginationPage ? (
-        <section className=" mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none">
+        <section className="mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none">
           <div className="items-center lg:flex">
             <h2 className="mb-2 text-2xl font-medium text-gray-100">
               <Link href={`/posts/${slug}`}>{title}</Link>
