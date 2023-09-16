@@ -17,11 +17,11 @@ const SinglePost = (props: Props) => {
     <>
       {isPaginationPage ? (
         <section className="mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none">
-          <div className="items-center lg:flex">
-            <h2 className="mb-2 text-2xl font-medium text-gray-100">
+          <div className="items-center lg:flex justify-between">
+            <h2 className="w-4/6 lg:w-4/5 mb-2 text-2xl font-medium text-gray-100">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
-            <div className="mr-2 text-gray-400">{date}</div>
+
             {tags.map((tag: string, index: number) => (
               <Link href={`/posts/tag/${tag}/page/1`} key={index}>
                 <span className="mr-2 rounded-xl bg-gray-500 px-2 font-medium text-white">
