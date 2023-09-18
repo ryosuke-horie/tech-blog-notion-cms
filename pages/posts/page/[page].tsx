@@ -50,8 +50,10 @@ const BlogPageList = ({ postsByPage, numberOfPage, allTags }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mt-4 lg:mt-16 w-full">
-        <h1 className="mb-8 lg:mb-16 text-center text-5xl font-medium">Blog Posts🚀</h1>
+      <main className="container mt-4 w-full lg:mt-16">
+        <h1 className="mb-8 text-center text-5xl font-medium lg:mb-16">
+          Blog Posts🚀
+        </h1>
         <section className="mx-auto w-5/6 grid-cols-2 gap-3 sm:grid">
           {postsByPage.map((post) => (
             <div key={post.id}>

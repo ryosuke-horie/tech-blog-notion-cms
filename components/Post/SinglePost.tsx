@@ -17,8 +17,8 @@ const SinglePost = (props: Props) => {
     <>
       {isPaginationPage ? (
         <section className="mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none">
-          <div className="items-center lg:flex justify-between">
-            <h2 className="w-4/6 lg:w-4/5 mb-2 text-2xl font-medium text-gray-100">
+          <div className="items-center justify-between lg:flex">
+            <h2 className="mb-2 w-4/6 text-2xl font-medium text-gray-100 lg:w-4/5">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
 
@@ -35,7 +35,7 @@ const SinglePost = (props: Props) => {
       ) : (
         <section className="mx-auto mb-8 rounded-md bg-sky-900 p-5 shadow-2xl transition-all duration-300 hover:translate-y-1 hover:shadow-none lg:w-1/2">
           <div className="flex items-center justify-between">
-            <h2 className="w-4/6 lg:w-4/5 mb-2 text-2xl font-medium text-gray-100">
+            <h2 className="mb-2 w-4/6 text-2xl font-medium text-gray-100 lg:w-4/5">
               <Link href={`/posts/${slug}`}>{title}</Link>
             </h2>
 
