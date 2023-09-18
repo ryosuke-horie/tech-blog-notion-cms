@@ -2,3 +2,12 @@
     list-style-type: disc;
     font-weight: normal;
 }
+
+.markdownContent hr {
+    border-color: #99CCFF;
+    border-top-width: 3px;
+}
+
+.markdownContent h3 {
+   font-size: 1rem;
+}
