@@ -1,0 +1,18 @@
+.markdownContent h3 {
+   font-size: 1rem;
+}
+
+.markdownContent ol {
+    padding-left: 15px;
+}
+
+.markdownContent li {
+    list-style-type: disc;
+    font-weight: normal;
+    list-style-position: inside;
+}
+
+.markdownContent hr {
+    border-color: #99CCFF;
+    border-top-width: 3px;
+}

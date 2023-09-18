@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { getAllPosts, getSinglePost } from '../../lib/notionAPI'
+import styles from '../../styles/posts/ReactMarkdown.module.css'
 
 export const getStaticPaths = async () => {
   const allPosts = await getAllPosts()
@@ -31,7 +32,7 @@ export const getStaticProps = async ({ params }) => {
 const Post = ({ post }) => {
   return (
     <section className="container mx-auto mt-20 h-screen px-5 lg:w-2/5 lg:px-2">
-      <h2 className="w-full text-2xl font-medium">{post.metadata.title}</h2>
+      <h1 className="w-full text-4xl font-medium">{post.metadata.title}</h1>
       <div className="mt-1 w-1/3 border-b-2 border-sky-900"></div>
       <span className="text-gray-500">Posted date at {post.metadata.date}</span>
       <br />
@@ -41,7 +42,7 @@ const Post = ({ post }) => {
         </p>
       ))}
 
-      <div className="mt-10 font-medium">
+      <div className={`mt-10 font-medium ${styles.markdownContent}`}>
         <ReactMarkdown
           components={{
             code({ node, inline, className, children }) {
