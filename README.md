@@ -1,38 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ryosuke-horie Notion Tech Blog
+TechBlog by ryosuke-horie
 
-## Getting Started
+## 概要
+このTechBlogは、日々の学習の振り返りや受賞内容、QiitaやZennに投稿した記事などを共有するための場所です。
+私のソフトウェアエンジニアとしてのポートフォリオの一部として機能し、技術コミュニティと共有することで、成長と情報の共有を促進します。
 
-First, run the development server:
+## 特徴とハイライト
+- *Markdownファイルの利用:* このTechBlogは、Markdownファイルを活用してコンテンツを管理し、編集します。これにより、シンプルで柔軟なコンテンツ管理が実現されます。
+- *Notion APIの活用:* 以前のTechBlog（microCMS）からの変更点として、Notion APIを利用した形式にアップグレードしました。これにより、記事の管理がより効率的に行えるようになりました。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## インストールと使用方法
+1. リポジトリをクローンします。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    ```bash
+    Copy code
+    git clone https://github.com/ryosuke-horie/tech-blog-notion-cms.git
+    ```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+2. 依存関係をインストールします。
+    ```bash
+    Copy code
+    npm install
+    ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. 環境変数を設定します。
+    ```
+    NOTION_TOKEN: Notionのアクセストークンを設定します。
+    NOTION_DATABASE_ID: NotionのデータベースIDを設定します。
+    ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+4. アプリケーションを実行します。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## デプロイ
+このTechBlogはVercelのホビープランを使用してデプロイされており、以下のURLでアクセスできます：https://ryo-tech-blog.vercel.app
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 今後の計画
+今後の計画としては、Notion記事以外にも、ZennやQiitaに投稿した記事など、さまざまなコンテンツをこのTechBlogに掲載する予定です。お楽しみに！
