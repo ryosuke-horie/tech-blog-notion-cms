@@ -1,10 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
 
+/**
+ * タグコンポーネント用Props
+ * @param tags タグ
+ */
 type Props = {
   tags: string[]
 }
 
+/**
+ * タグコンポーネント
+ * @param props
+ */
 const Tag = (props: Props) => {
   const { tags } = props
 

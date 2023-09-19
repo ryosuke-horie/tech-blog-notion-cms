@@ -1,6 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
 
+/**
+ * 記事コンポーネント用Props
+ * @param title 記事タイトル
+ * @param description 記事概要
+ * @param date 記事投稿日
+ * @param tags 記事タグ
+ * @param slug 記事スラッグ
+ * @param isPaginationPage ページネーションページかどうか
+ */
 type Props = {
   title: string
   description: string
@@ -10,6 +19,13 @@ type Props = {
   isPaginationPage: boolean
 }
 
+/**
+ * 記事コンポーネント
+ * ページネーションページと個別記事ページで使用（若干仕様が異なる）
+ * 違いはisPaginationPageで判定
+ * ページネーションページではタグをクリックするとそのタグのページネーションページに遷移する
+ * @param props
+ */
 const SinglePost = (props: Props) => {
   const { title, description, date, tags, slug, isPaginationPage } = props
 

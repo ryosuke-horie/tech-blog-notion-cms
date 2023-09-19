@@ -3,11 +3,20 @@ import React from 'react'
 
 import { getPageLink } from '../../lib/blog-helper'
 
+/**
+ * ページネーション用Props
+ * @param numberOfPage ページ数
+ * @param tag タグ
+ */
 interface Props {
   numberOfPage: number
   tag: string
 }
 
+/**
+ * ページネーションコンポーネント
+ * @param props
+ */
 const Pagination = (props: Props) => {
   const { numberOfPage, tag } = props
 
