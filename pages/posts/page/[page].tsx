@@ -10,6 +10,9 @@ import {
   getPostsByPage,
 } from '../../../lib/notionAPI'
 
+/**
+ * 動的ルーティングのためのパスを生成
+ */
 export const getStaticPaths: GetStaticPaths = async () => {
   const numberOfPage = await getNumberOfPages()
 
@@ -24,6 +27,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
+/**
+ * 動的ルーティングのためのデータを取得(ISR)
+ * 24時間ごとに更新
+ */
 export const getStaticProps: GetStaticProps = async (context) => {
   const currentPage = context.params?.page
   const postsByPage = await getPostsByPage(parseInt(currentPage.toString(), 10))
@@ -41,6 +48,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
+/**
+ * ページネーションページ
+ * @param postsByPage ページネーションページに表示する記事
+ * @param numberOfPage 全てのページ数
+ * @param allTags 全てのタグ
+ */
 const BlogPageList = ({ postsByPage, numberOfPage, allTags }) => {
   return (
     <div className="container mx-auto h-full w-full">

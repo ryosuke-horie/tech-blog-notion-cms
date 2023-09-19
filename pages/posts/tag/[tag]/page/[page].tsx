@@ -10,6 +10,10 @@ import {
   getPostsByTagAndPage,
 } from '../../../../../lib/notionAPI'
 
+/**
+ * 動的ルーティングのためのパスを生成
+ * @returns
+ */
 export const getStaticPaths: GetStaticPaths = async () => {
   const allTags = await getAllTags()
   const params = []
@@ -30,6 +34,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
+/**
+ * 動的ルーティングのためのデータを取得(ISR)
+ * 24時間ごとに更新
+ * @param context
+ */
 export const getStaticProps: GetStaticProps = async (context) => {
   const currentPage: string = context.params?.page.toString()
   const currentTag: string = context.params?.tag.toString()
@@ -50,10 +59,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
       currentTag,
       allTags,
     },
-    revalidate: 60 * 60 * 6,
+    revalidate: 60 * 60 * 24,
   }
 }
 
+/**
+ * タグ別ページ
+ * @param numberOfPagesByTag タグ別のページ数
+ * @param posts タグ別の記事
+ * @param currentTag 現在のタグ
+ * @param allTags 全てのタグ
+ */
 const BlogTagPageList = ({
   numberOfPagesByTag,
   posts,
