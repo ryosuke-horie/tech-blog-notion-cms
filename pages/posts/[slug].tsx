@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import Link from 'next/link'
 import React from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
@@ -8,6 +7,9 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { getAllPosts, getSinglePost } from '../../lib/notionAPI'
 import styles from '../../styles/posts/ReactMarkdown.module.css'
 
+/**
+ * 動的ルーティングのためのパスを生成
+ */
 export const getStaticPaths = async () => {
   const allPosts = await getAllPosts()
   const paths = allPosts.map(({ slug }) => ({ params: { slug } }))
@@ -18,6 +20,12 @@ export const getStaticPaths = async () => {
   }
 }
 
+/**
+ * 動的ルーティングのためのデータを取得(ISR)
+ * 24時間ごとに更新
+ * @param param0
+ * @returns
+ */
 export const getStaticProps = async ({ params }) => {
   const post = await getSinglePost(params.slug)
 
@@ -25,10 +33,17 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post,
     },
-    revalidate: 60 * 60 * 6, // 6時間ごとに更新
+    // 24時間ごとに更新
+    revalidate: 60 * 60 * 24,
   }
 }
 
+/**
+ * 個別記事ページ
+ * Slugを元に記事を取得
+ * ReactMarkdownを使用して記事を表示
+ * @param post
+ */
 const Post = ({ post }) => {
   return (
     <section className="container mx-auto mt-20 h-screen px-5 lg:w-2/5 lg:px-2">

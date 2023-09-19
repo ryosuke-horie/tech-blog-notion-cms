@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
 
+/**
+ * ナビゲーションバー
+ */
 const Navbar = () => {
   return (
     <nav className="container mx-auto px-5 lg:w-2/5 lg:px-2">

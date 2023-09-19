@@ -6,6 +6,10 @@ import SinglePost from '../components/Post/SinglePost'
 import Tag from '../components/Tag/Tag'
 import { getAllTags, getPostsForTopPage } from '../lib/notionAPI'
 
+/**
+ * SG
+ * @returns
+ */
 export const getStaticProps: GetStaticProps = async () => {
   const fourPosts = await getPostsForTopPage(4)
   const allTags = await getAllTags()
@@ -19,6 +23,11 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
+/**
+ * トップページ
+ * @param fourPosts トップページに表示する記事(4件)
+ * @param allTags 全てのタグ
+ */
 export default function Home({ fourPosts, allTags }) {
   return (
     <div className="container mx-auto h-full w-full">

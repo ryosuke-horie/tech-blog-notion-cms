@@ -3,12 +3,22 @@ import { NotionToMarkdown } from 'notion-to-md'
 
 import { NUMBER_OF_POSTS_PER_PAGE } from '../constants/constants'
 
+/**
+ * Notion API クライアント
+ */
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
+/**
+ * NotionToMarkdown クライアント
+ * @param notionClient Notion API クライアント
+ */
 const n2m = new NotionToMarkdown({ notionClient: notion })
 
+/**
+ * 全記事の取得関数
+ */
 export const getAllPosts = async () => {
   const posts = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
@@ -34,6 +44,10 @@ export const getAllPosts = async () => {
   })
 }
 
+/**
+ * ページメタデータの取得関数
+ * @param post
+ */
 const getPageMetaData = (post) => {
   const getTags = (tags) => {
     const allTags = tags.map((tag) => {
@@ -53,6 +67,10 @@ const getPageMetaData = (post) => {
   }
 }
 
+/**
+ * 記事詳細ページの取得関数
+ * @param slug
+ */
 export const getSinglePost = async (slug) => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
@@ -78,14 +96,20 @@ export const getSinglePost = async (slug) => {
   }
 }
 
-/* Topページ用記事の取得(4つ) */
+/**
+ * Topページ用記事の取得(4つ)
+ * @param pageSize
+ */
 export const getPostsForTopPage = async (pageSize: number) => {
   const allPosts = await getAllPosts()
   const fourPosts = allPosts.slice(0, pageSize)
   return fourPosts
 }
 
-/* ページ番号に応じた記事取得 */
+/**
+ * ページ番号に応じた記事取得
+ * @param page
+ */
 export const getPostsByPage = async (page: number) => {
   const allPosts = await getAllPosts()
 
@@ -95,6 +119,9 @@ export const getPostsByPage = async (page: number) => {
   return allPosts.slice(startIndex, endIndex)
 }
 
+/**
+ * 記事の総数を取得
+ */
 export const getNumberOfPages = async () => {
   const allPosts = await getAllPosts()
 
@@ -104,6 +131,12 @@ export const getNumberOfPages = async () => {
   )
 }
 
+/**
+ * タグページ用記事の取得
+ * @param tagName
+ * @param page
+ * @returns
+ */
 export const getPostsByTagAndPage = async (tagName: string, page: number) => {
   const allPosts = await getAllPosts()
   const posts = allPosts.filter((post) =>
@@ -116,6 +149,10 @@ export const getPostsByTagAndPage = async (tagName: string, page: number) => {
   return posts.slice(startIndex, endIndex)
 }
 
+/**
+ * タグページ用記事の総数を取得
+ * @param tagName
+ */
 export const getNumberOfPagesByTag = async (tagName: string) => {
   const allPosts = await getAllPosts()
   const posts = allPosts.filter((post) =>
@@ -128,6 +165,9 @@ export const getNumberOfPagesByTag = async (tagName: string) => {
   )
 }
 
+/**
+ * 全タグの取得
+ */
 export const getAllTags = async () => {
   const allPosts = await getAllPosts()
 
