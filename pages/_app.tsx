@@ -15,7 +15,7 @@ import '../styles/globals.css'
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   useEffect(() => {
-    const handleRouterChange = (url: any) => {
+    const handleRouterChange = (url: string) => {
       gtag.pageview(url)
     }
     router.events.on('routeChangeComplete', handleRouterChange)
