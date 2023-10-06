@@ -1,8 +1,9 @@
+import { useRouter } from 'next/router'
+import Script from 'next/script'
+import { useEffect } from 'react'
+
 import Layout from '../components/Layout'
-import Script from "next/script";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import * as gtag from "../lib/gtag";
+import * as gtag from '../lib/gtag'
 import '../styles/globals.css'
 
 /**
@@ -12,16 +13,16 @@ import '../styles/globals.css'
  * @returns
  */
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  const router = useRouter()
   useEffect(() => {
     const handleRouterChange = (url: any) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouterChange);
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouterChange)
     return () => {
-      router.events.off("routeChangeComplete", handleRouterChange);
-    };
-  }, [router.events]);
+      router.events.off('routeChangeComplete', handleRouterChange)
+    }
+  }, [router.events])
 
   return (
     <Layout>
