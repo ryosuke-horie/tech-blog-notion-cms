@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import SinglePost from '../components/Post/SinglePost'
 import Tag from '../components/Tag/Tag'
+import { NUMBER_OF_POSTS_PER_PAGE } from '../constants/constants'
 import { getAllTags, getPostsForTopPage } from '../lib/notionAPI'
 
 /**
@@ -11,7 +12,7 @@ import { getAllTags, getPostsForTopPage } from '../lib/notionAPI'
  * @returns
  */
 export const getStaticProps: GetStaticProps = async () => {
-  const fourPosts = await getPostsForTopPage(4)
+  const fourPosts = await getPostsForTopPage(NUMBER_OF_POSTS_PER_PAGE)
   const allTags = await getAllTags()
 
   return {
